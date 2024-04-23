@@ -1,11 +1,14 @@
 import AnimatedBox, {AnimatedBoxProps} from "@/components/animated-box.tsx";
 import {Bar} from "@/atoms";
+import {ReactNode} from "react";
 
-const HeaderBar = ({children, ...rest}: AnimatedBoxProps) => {
+const HeaderBar = ({children, ...rest}: AnimatedBoxProps & {
+  children: ReactNode;
+}) => {
   return (
    <AnimatedBox
     position="absolute"
-    top={80}
+    top={0}
     left={0}
     right={0}
     {...rest}

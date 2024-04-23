@@ -4,7 +4,7 @@ import {
   createVariant,
   VariantProps
 } from '@shopify/restyle'
-import Box, { BoxProps } from './box'
+import Box, { BoxProps } from '@/atoms/box.ts'
 
 const Bar = createRestyleComponent<
  VariantProps<Theme, 'barVariants'> & BoxProps,
