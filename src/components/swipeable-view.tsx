@@ -47,6 +47,7 @@ const SwipeableView = forwardRef<SwipeableViewHandle, Props>((props, ref) => {
 
   const invokeSwipeLeft = useCallback(() => {
     if (onSwipeLeft) {
+      console.log(1)
       onSwipeLeft(() => {
         translateX.value = withTiming(0)
       })
@@ -60,6 +61,7 @@ const SwipeableView = forwardRef<SwipeableViewHandle, Props>((props, ref) => {
     const shouldBeDismissed = translateX.value < SWIPE_THRESHOLD
     if (shouldBeDismissed) {
       translateX.value = withTiming(-1)
+      console.log('invokeSwipeLeft')
       runOnJS(invokeSwipeLeft)()
     } else {
       translateX.value = withTiming(0)

@@ -4,5 +4,15 @@ import Container  from "@/atoms/container";
 import Bar from "@/atoms/bar";
 import Pressable from "@/atoms/pressable.tsx";
 import Touchable, {TouchableOpacity} from "@/atoms/touchable.tsx";
+import BottomSheet from "@/atoms/bottom-sheet.tsx";
 
-export {Box, Text, Container, Bar, Pressable, TouchableOpacity, Touchable};
+export {
+  Box,
+  Text,
+  Container,
+  Bar,
+  Pressable,
+  TouchableOpacity,
+  Touchable,
+  BottomSheet
+};
