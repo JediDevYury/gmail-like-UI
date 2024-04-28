@@ -2,14 +2,33 @@ import React, {useCallback} from "react";
 
 import {DrawerContentComponentProps} from "@react-navigation/drawer";
 import {Box, Text} from "@/atoms";
-import BookList from "@/components/book-list.tsx";
 import Feather from 'react-native-vector-icons/Feather';
 import theme from "@/themes/light.ts";
+import {useAtom} from "jotai";
+import actionThemeId from "@/states/theme.ts";
+import {ThemeMeta, ThemeNames, themes} from "@/themes";
+import ThemeListItem from "@/components/theme-list-item.tsx";
+import {createBox} from "@shopify/restyle";
+import {type Theme} from "@/themes";
+import {FlatList, FlatListProps} from "react-native";
 
-const Sidebar = ({ navigation }: DrawerContentComponentProps) => {
-  const handleBookListItemsPress = useCallback(() => {
-    navigation.closeDrawer();
-  }, [navigation]);
+const StyledFlatList = createBox<Theme, FlatListProps<ThemeMeta>>(FlatList);
+
+const Sidebar = ({  }: DrawerContentComponentProps) => {
+  const [_, setActiveTheme] = useAtom(actionThemeId);
+
+  const handleThemeItemPress = useCallback((selectedThemeId: ThemeNames) => {
+    setActiveTheme(selectedThemeId);
+  }, [setActiveTheme]);
+
+  const renderThemeItem = useCallback(({item}: {item: ThemeMeta}) => {
+    return (
+      <ThemeListItem
+       theme={item}
+       onPress={handleThemeItemPress}
+      />
+    );
+  }, [handleThemeItemPress]);
 
   return (
    <Box
@@ -35,9 +54,20 @@ const Sidebar = ({ navigation }: DrawerContentComponentProps) => {
          </Text>
        </Box>
      </Box>
-     <BookList
-      onPressItem={handleBookListItemsPress}
-      inBottomSheet={false}
+     <StyledFlatList
+      data={themes}
+      ListHeaderComponent={() => (
+       <Box
+        p="lg"
+        alignItems="flex-start"
+       >
+         <Text color="$sidebarForeground" fontWeight="bold">
+           UI Themes
+         </Text>
+       </Box>
+      )}
+      keyExtractor={(theme) => theme.id}
+      renderItem={renderThemeItem}
      />
    </Box>
   );

@@ -2,7 +2,7 @@ import {createBox} from '@shopify/restyle';
 import {Theme} from "@/themes";
 import {FlatListProps, NativeScrollEvent, NativeSyntheticEvent} from "react-native";
 import {Note} from "@/models.ts";
-import {useCallback} from "react";
+import {ComponentType, useCallback} from "react";
 import NoteListItem from "@/components/note-list-item.tsx";
 import NOTES from "@/fixtures/notes.ts";
 import Animated, {AnimatedProps} from "react-native-reanimated";
@@ -15,13 +15,15 @@ interface Props {
   onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   onItemPress: (noteId: string) => void;
   onItemSwipeLeft: (noteId: string, cancel: () => void) => void;
+  ListHeaderComponent?: ComponentType<any> | null | undefined;
 }
 
 const NoteList = ({
   onScroll,
   contentInsetTop,
   onItemPress,
-  onItemSwipeLeft
+  onItemSwipeLeft,
+  ListHeaderComponent
 }: Props) => {
 
   const renderItem = useCallback(({item}: {item: Note}) => {
@@ -37,7 +39,14 @@ const NoteList = ({
     renderItem={renderItem}
     onScroll={onScroll}
     scrollEventThrottle={16}
-    ListHeaderComponent={<Box width="100%" height={contentInsetTop}/>}
+    ListHeaderComponent={
+      <Box>
+        <>
+          <Box width="100%" height={contentInsetTop} />
+          {ListHeaderComponent && <ListHeaderComponent />}
+        </>
+      </Box>
+    }
     keyExtractor={item => item.id}
     width={'100%'}
    />

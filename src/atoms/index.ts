@@ -5,6 +5,7 @@ import Bar from "@/atoms/bar";
 import Pressable from "@/atoms/pressable.tsx";
 import Touchable, {TouchableOpacity} from "@/atoms/touchable.tsx";
 import BottomSheet from "@/atoms/bottom-sheet.tsx";
+import TextInput from "@/atoms/text-input.tsx";
 
 export {
   Box,
@@ -14,5 +15,6 @@ export {
   Pressable,
   TouchableOpacity,
   Touchable,
-  BottomSheet
+  BottomSheet,
+  TextInput
 };

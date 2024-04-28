@@ -1,4 +1,4 @@
-import {ThemeMeta} from "@/themes";
+import {ThemeMeta, ThemeNames} from "@/themes";
 
 import React, {useCallback, useMemo} from 'react';
 import {useAtom} from "jotai";
@@ -9,7 +9,7 @@ import FeatherIcon from "@/components/icon.tsx";
 
 interface Props {
   theme: ThemeMeta
-  onPress: (themeId: string) => void
+  onPress: (themeId: ThemeNames) => void
 }
 
 const ThemeListItem = ({theme, onPress}: Props) => {
