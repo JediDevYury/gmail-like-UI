@@ -10,7 +10,6 @@ import useStickyHeader from "@/hooks/use-sticky-header.ts";
 import MoveNoteSheet, {
   type MoveNoteSheet as MoveNoteSheetType
 } from "@/components/move-note-sheet.tsx";
-import ThemePicker from "@/components/theme-picker.tsx";
 import NoteListHeaderTitleBar from "@/components/note-list-header-title-bar.tsx";
 import {useAtom} from "jotai";
 import {editingNoteIdAtom} from "@/states/editor.ts";

@@ -1,5 +1,5 @@
 import AnimatedBox, {AnimatedBoxProps} from "@/components/animated-box.tsx";
-import {Bar, TextInput, TouchableOpacity} from "@/atoms";
+import {TextInput, TouchableOpacity} from "@/atoms";
 import {useCallback, useRef} from "react";
 import {useAtom} from "jotai";
 import {searchInputHasFocusAtom, searchQueryAtom} from "@/states/search-bar.tsx";
