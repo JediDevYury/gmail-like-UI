@@ -6,6 +6,8 @@ import Pressable from "@/atoms/pressable.tsx";
 import Touchable, {TouchableOpacity} from "@/atoms/touchable.tsx";
 import BottomSheet from "@/atoms/bottom-sheet.tsx";
 import TextInput from "@/atoms/text-input.tsx";
+import SafeAreaView from "@/atoms/safe-area-view.tsx";
+import ScrollView from "@/atoms/scroll-view.ts";
 
 export {
   Box,
@@ -16,5 +18,7 @@ export {
   TouchableOpacity,
   Touchable,
   BottomSheet,
-  TextInput
+  TextInput,
+  SafeAreaView,
+  ScrollView
 };

@@ -12,6 +12,8 @@ import MoveNoteSheet, {
 } from "@/components/move-note-sheet.tsx";
 import ThemePicker from "@/components/theme-picker.tsx";
 import NoteListHeaderTitleBar from "@/components/note-list-header-title-bar.tsx";
+import {useAtom} from "jotai";
+import {editingNoteIdAtom} from "@/states/editor.ts";
 
 type Props =
  CompositeScreenProps<
@@ -21,6 +23,7 @@ type Props =
   >>
 
 export default function MainScreen({navigation}: Props){
+  const [_, setEditingNoteId] = useAtom(editingNoteIdAtom);
   const [concealNoteListItem, setConcealNoteListItem] = useState<(() => void) | null>(null);
   const {
     handleNoteListLayout,
@@ -32,7 +35,8 @@ export default function MainScreen({navigation}: Props){
   const refMoveNoteSheet = useRef<MoveNoteSheetType>(null);
 
   const handleNoteListItemPress = useCallback((noteId: string) => {
-    navigation.navigate("Detail", { noteId });
+    setEditingNoteId(noteId);
+    navigation.navigate("Detail");
   }, []);
 
   const handleNoteListItemSwipeLeft = useCallback((_noteId: string, conceal: () => void) => {
@@ -61,6 +65,7 @@ export default function MainScreen({navigation}: Props){
      <HeaderBar
       style={headerBarStyle}
       onLayout={handleNoteListLayout}
+      onSidebarToggle={() => navigation.openDrawer()}
      />
      <MoveNoteSheet
       ref={refMoveNoteSheet}
