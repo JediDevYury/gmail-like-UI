@@ -14,11 +14,9 @@ interface Props {
   onClose?: () => void
 }
 
-interface MoveNoteSheetHandle {
+export interface MoveNoteSheetHandle {
   show: () => void
 }
-
-export type MoveNoteSheet = MoveNoteSheetHandle
 
 const MoveNoteSheet = forwardRef<MoveNoteSheetHandle, Props>(
  ({ onClose }, ref) => {

@@ -10,7 +10,7 @@ import {Box} from "@/atoms";
 
 const StyledFlatList = createBox<Theme, AnimatedProps<FlatListProps<Note>>>(Animated.FlatList);
 
-interface Props {
+export interface NoteListProps {
   contentInsetTop: number;
   onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   onItemPress: (noteId: string) => void;
@@ -24,7 +24,7 @@ const NoteList = ({
   onItemPress,
   onItemSwipeLeft,
   ListHeaderComponent
-}: Props) => {
+}: NoteListProps) => {
 
   const renderItem = useCallback(({item}: {item: Note}) => {
     return (

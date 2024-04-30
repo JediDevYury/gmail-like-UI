@@ -80,5 +80,5 @@ To learn more about React Native, take a look at the following resources:
 
 Structure of the project:
  <Main>
- -> <NoteList>(phones/tablets)
+ -> <NoteListScreenForPhone>(phones/tablets)
   -> <NoteListCommon>

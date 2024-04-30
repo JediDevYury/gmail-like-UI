@@ -1,6 +1,6 @@
 import {Note} from "@/models.ts";
 import {Box, Text, TouchableOpacity} from "@/atoms";
-import {useCallback} from "react";
+import {memo, useCallback} from "react";
 import NoteListItemActionView from "@/components/note-list-item-action-view.tsx";
 import {SharedValue} from "react-native-reanimated";
 import SwipeableView from "@/components/swipeable-view.tsx";
@@ -10,7 +10,7 @@ export interface NoteListItemProps extends Note {
   onSwipeLeft?: (noteId: string, done: () => void) => void;
 }
 
-const NoteListItem = (props: NoteListItemProps) => {
+const NoteListItem = memo((props: NoteListItemProps) => {
   const {onPress, onSwipeLeft, id} = props;
 
   const handlePress = useCallback(() => {
@@ -59,6 +59,6 @@ const NoteListItem = (props: NoteListItemProps) => {
      </Box>
    </SwipeableView>
   );
-};
+});
 
 export default NoteListItem;
