@@ -1,6 +1,5 @@
 import React, {useCallback} from "react";
 
-import {DrawerContentComponentProps} from "@react-navigation/drawer";
 import {Box, Text} from "@/atoms";
 import Feather from 'react-native-vector-icons/Feather';
 import theme from "@/themes/light.ts";
@@ -14,7 +13,7 @@ import {FlatList, FlatListProps} from "react-native";
 
 const StyledFlatList = createBox<Theme, FlatListProps<ThemeMeta>>(FlatList);
 
-const Sidebar = ({  }: DrawerContentComponentProps) => {
+const Sidebar = () => {
   const [_, setActiveTheme] = useAtom(actionThemeId);
 
   const handleThemeItemPress = useCallback((selectedThemeId: ThemeNames) => {

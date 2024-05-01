@@ -4,8 +4,8 @@ import {createDrawerNavigator} from "@react-navigation/drawer";
 import MainScreen from "@/screens/main.tsx";
 import Sidebar from "@/components/sidebar.tsx";
 import {NavigatorScreenParams} from "@react-navigation/native";
-import DetailScreen from "@/components/detail.tsx";
 import useDrawerEnabled from "@/hooks/use-drawer-enabled.tsx";
+import DetailScreenForPhone from "@/screens/detail-screen-for-phone.tsx";
 
 export type HomeDrawerParamList = {
   Main: {}
@@ -22,21 +22,23 @@ const Drawer = createDrawerNavigator<HomeDrawerParamList>()
 function HomeScreen() {
   const swipeEnabled = useDrawerEnabled();
 
-  return <Drawer.Navigator
-   initialRouteName="Main"
-   screenOptions={{
-     drawerType: 'back',
-     swipeEdgeWidth: 200,
-     swipeEnabled,
-   }}
-   drawerContent={props => <Sidebar {...props} />}
-  >
-    <Drawer.Screen
-     name="Main"
-     component={MainScreen}
-     options={{headerShown: false}}
-    />
-  </Drawer.Navigator>
+  return (
+   <Drawer.Navigator
+    initialRouteName="Main"
+    screenOptions={{
+      drawerType: 'back',
+      swipeEdgeWidth: 200,
+      swipeEnabled,
+    }}
+    drawerContent={() => <Sidebar />}
+   >
+     <Drawer.Screen
+      name="Main"
+      component={MainScreen}
+      options={{headerShown: false}}
+     />
+   </Drawer.Navigator>
+  )
 }
 
 export default function Navigations(){
@@ -50,7 +52,7 @@ export default function Navigations(){
     />
     <Stack.Screen
       name="Detail"
-      component={DetailScreen}
+      component={DetailScreenForPhone}
       options={{
         headerShown: false
       }}
